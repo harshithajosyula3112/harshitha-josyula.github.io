@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harshitha Josyula | Data Analyst & Data Scientist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0a2540;
+            --secondary: #1a5f7a;
+            --accent: #d4af37;
+            --text-light: #ecf0f1;
+            --text-dark: #2c3e50;
+            --bg-light: #f8f9fa;
+            --card-bg: #ffffff;
+            --gradient-start: #0a2540;
+            --gradient-end: #1a5f7a;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 37, 64, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 0.8rem 0;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-light);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-light);
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--accent);
+            font-weight: 500;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .hero-description {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.8;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            animation: fadeInUp 1s ease-out 0.8s both;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--primary);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--text-light);
+        }
+
+        .btn-secondary:hover {
+            background: var(--text-light);
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator i {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 2rem auto 0;
+        }
+
+        /* About Section */
+        #about {
+            background: var(--card-bg);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent), var(--secondary));
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+            transform: translateX(10px);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3.5rem;
+            top: 2rem;
+            width: 15px;
+            height: 15px;
+            background: var(--accent);
+            border-radius: 50%;
+            border: 3px solid var(--bg-light);
+            box-shadow: 0 0 0 3px var(--accent);
+        }
+
+        .timeline-date {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--text-light);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .timeline-title {
+            font-size: 1.6rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-company {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-description {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .timeline-description li {
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            position: relative;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        .timeline-description li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Skills Section */
+        #skills {
+            background: var(--card-bg);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, rgba(10, 37, 64, 0.05), rgba(26, 95, 122, 0.05));
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-category h3 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .skill-category h3 i {
+            color: var(--accent);
+            font-size: 1.6rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .skill-tag {
+            padding: 0.5rem 1rem;
+            background: var(--card-bg);
+            border: 2px solid var(--secondary);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--secondary);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: var(--secondary);
+            color: var(--text-light);
+            transform: scale(1.05);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--accent);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-header {
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(10, 37, 64, 0.05), rgba(26, 95, 122, 0.05));
+        }
+
+        .project-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .project-icon i {
+            font-size: 1.8rem;
+            color: var(--accent);
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-body {
+            padding: 0 2rem 2rem;
+        }
+
+        .project-description {
+            color: var(--text-dark);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-badge {
+            padding: 0.3rem 0.8rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--text-light);
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Education Section */
+        #education {
+            background: var(--card-bg);
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .education-card {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            color: var(--text-light);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .education-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            transition: all 0.5s ease;
+        }
+
+        .education-card:hover::before {
+            top: -100%;
+            right: -100%;
+        }
+
+        .education-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .education-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .education-degree {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-school {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-date {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+
+        .education-gpa {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: var(--accent);
+            color: var(--primary);
+            border-radius: 20px;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        /* Achievements Section */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .achievement-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--accent);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .achievement-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .achievement-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .achievement-title {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .achievement-description {
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            color: var(--text-light);
+        }
+
+        #contact .section-title {
+            color: var(--text-light);
+        }
+
+        #contact .section-title::after {
+            background: var(--accent);
+        }
+
+        #contact .section-subtitle {
+            color: var(--text-light);
+            opacity: 0.9;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .contact-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-value {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .contact-value a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-value a:hover {
+            color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: var(--text-light);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                flex-direction: column;
+                background: var(--primary);
+                width: 100%;
+                padding: 2rem;
+                transition: right 0.3s ease;
+                gap: 1.5rem;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-description {
+                font-size: 1.1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .timeline {
+                padding-left: 2rem;
+            }
+
+            .projects-grid,
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">HJ</div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-subtitle">Data Analyst & Data Scientist</div>
+            <h1>Harshitha Josyula</h1>
+            <p class="hero-description">
+                Transforming complex data into actionable insights. Specializing in financial modeling, 
+                data visualization, and process optimization with a proven track record of driving 
+                profitability and operational excellence.
+            </p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">
+                    <i class="fas fa-envelope"></i> Get In Touch
+                </a>
+                <a href="https://www.linkedin.com/in/harshitha-josyula" target="_blank" class="btn btn-secondary">
+                    <i class="fab fa-linkedin"></i> LinkedIn Profile
+                </a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-header">
+            <h2 class="section-title">About Me</h2>
+            <p class="section-subtitle">
+                Results-oriented data professional with expertise in financial analysis and machine learning
+            </p>
+        </div>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Professional Summary</h3>
+                <p>
+                    I am a results-oriented Data Analyst with a proven track record in financial modeling, 
+                    data visualization, and process optimization. With two years of professional experience 
+                    at Development Bank of Singapore Tech India and current roles at UMBC, I excel at 
+                    leveraging tools such as Power BI, Tableau, SQL, and Python to drive data-informed decisions.
+                </p>
+                <p>
+                    My expertise spans improving profitability, streamlining workflows, and delivering 
+                    actionable insights to senior stakeholders. I'm passionate about creating dashboards, 
+                    automating reports, and presenting findings that enable organizational process improvements 
+                    and performance optimization.
+                </p>
+                <p>
+                    Currently pursuing my Master's in Professional Studies, Data Science at UMBC with a 
+                    perfect 4.0 GPA, I combine academic excellence with practical industry experience.
+                </p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">4.0</div>
+                    <div class="stat-label">GPA</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">12%</div>
+                    <div class="stat-label">Profit Increase at DBS</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">40%</div>
+                    <div class="stat-label">Efficiency Gain</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="section-header">
+            <h2 class="section-title">Professional Experience</h2>
+            <p class="section-subtitle">
+                My journey in data analytics and financial analysis
+            </p>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">Jun 2025 - Present</div>
+                <h3 class="timeline-title">Financial Process Analyst Intern</h3>
+                <div class="timeline-company">Student Affairs Business Services Center, UMBC</div>
+                <ul class="timeline-description">
+                    <li>Analyzed 12 months of spending trends, budget variances, and transaction volumes, identifying peak periods and enabling resource reallocation that reduced over-budget instances by 15%</li>
+                    <li>Automated weekly PeopleSoft/Oracle Financials budget and purchase order reports, saving stakeholders 5+ hours/week in manual report retrieval</li>
+                    <li>Authored 8 SOP documents for procurement, travel authorization, and cash handling, stored on SharePoint/Confluence for staff-wide access</li>
+                    <li>Mapped cross-department workflows in Lucidchart, uncovering process bottlenecks and recommending changes that improved approval turnaround times by 20%</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">Aug 2024 - Present</div>
+                <h3 class="timeline-title">Office Assistant</h3>
+                <div class="timeline-company">Student Disability Services, UMBC</div>
+                <ul class="timeline-description">
+                    <li>Scheduled and coordinated 50+ student appointments monthly, serving as the liaison between students and staff to ensure timely communication</li>
+                    <li>Maintained confidential student records and managed data using UMBC's campus information systems</li>
+                    <li>Prepared documentation for internal control audits, ensuring 100% compliance with UMBC and State of Maryland policies</li>
+                    <li>Analyzed Disability Services financial transactions, identifying 30–35% spending spikes at semester start and enabling proactive budget and staffing adjustments</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">Jan 2024 - Present</div>
+                <h3 class="timeline-title">Math Tutor</h3>
+                <div class="timeline-company">Reach Together Tutoring Program, UMBC</div>
+                <ul class="timeline-description">
+                    <li>Provided one-on-one and small group tutoring in advanced mathematics for over 15 undergraduate students, enhancing their understanding and confidence</li>
+                    <li>Developed personalized learning strategies to address diverse student needs and learning styles, leading to 90% measurable improvement in student performance</li>
+                    <li>Tracked student progress and collaborated with program coordinators to enhance tutoring effectiveness</li>
+                    <li>Maintained detailed documentation of tutoring sessions and student progress, ensuring accurate records that supported tailored learning plans</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">Jul 2022 - Dec 2023</div>
+                <h3 class="timeline-title">Data Analyst</h3>
+                <div class="timeline-company">Development Bank of Singapore Tech India</div>
+                <ul class="timeline-description">
+                    <li>Supported Consumer and Operational Risk Analysis in the India Loan Evaluation & Application Processing System project by utilizing SQL databases and advanced statistical analysis</li>
+                    <li>Developed a three-tier pricing model that increased average sale value by 25% (₹4.8M to ₹6.0M) and profit margin by 12% (₹1.2M to ₹1.34M)</li>
+                    <li>Crafted data visualizations and management reports using Microsoft PowerBI to present findings and actionable recommendations to leadership</li>
+                    <li>Automated report generation using Jasper Reports + Java, reducing data processing time from 100 hours to 60 hours monthly (40% efficiency gain)</li>
+                    <li>Cleaned and prepared datasets of over 1M+ records, incorporating retail user feedback to improve data accuracy</li>
+                    <li>Authored technical documentation for reporting solutions, ensuring accuracy and reliability</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">Jan 2022 - Jun 2022</div>
+                <h3 class="timeline-title">Intern Data Analyst</h3>
+                <div class="timeline-company">OpenText</div>
+                <ul class="timeline-description">
+                    <li>Conducted defect pattern analysis, improving QA efficiency and reducing bug resolution time by 18%</li>
+                    <li>Analyzed system logs and user behavior to detect anomalies, increasing software stability and user satisfaction</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="section-header">
+            <h2 class="section-title">Technical Skills</h2>
+            <p class="section-subtitle">
+                Comprehensive toolkit for data analysis and business intelligence
+            </p>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3><i class="fas fa-code"></i> Programming & Analysis</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Advanced Statistics</span>
+                    <span class="skill-tag">Machine Learning</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3><i class="fas fa-chart-line"></i> Data Visualization</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">PowerBI</span>
+                    <span class="skill-tag">Tableau</span>
+                    <span class="skill-tag">Dashboard Creation</span>
+                    <span class="skill-tag">Executive Reporting</span>
+                    <span class="skill-tag">Presentation Design</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3><i class="fas fa-database"></i> Database Management</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">SQL Databases</span>
+                    <span class="skill-tag">NoSQL Databases</span>
+                    <span class="skill-tag">Data Cleaning</span>
+                    <span class="skill-tag">Data Validation</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3><i class="fas fa-laptop-code"></i> Software Proficiency</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Microsoft Excel</span>
+                    <span class="skill-tag">PowerPoint</span>
+                    <span class="skill-tag">Jasper Reports</span>
+                    <span class="skill-tag">Google Analytics</span>
+                    <span class="skill-tag">SharePoint</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3><i class="fas fa-chart-pie"></i> Financial Modeling</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Advanced Excel</span>
+                    <span class="skill-tag">Pivot Tables</span>
+                    <span class="skill-tag">Macros</span>
+                    <span class="skill-tag">Scenario Modeling</span>
+                    <span class="skill-tag">Valuation Analysis</span>
+                    <span class="skill-tag">Risk Assessment</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3><i class="fas fa-tools"></i> Tools & Platforms</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">PeopleSoft</span>
+                    <span class="skill-tag">Oracle Financials</span>
+                    <span class="skill-tag">Lucidchart</span>
+                    <span class="skill-tag">Confluence</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="section-header">
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-subtitle">
+                Innovative data science and machine learning solutions
+            </p>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="project-title">Recommendation Systems</h3>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">
+                        Developed a machine learning-based recommendation system to analyze users' past 
+                        purchases and generate personalized product suggestions. Implemented collaborative 
+                        and content-based filtering techniques, improving recommendation accuracy by 15%.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">Machine Learning</span>
+                        <span class="tech-badge">Collaborative Filtering</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3 class="project-title">Document Level Sentiment Analysis</h3>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">
+                        Developed a Sentiment Analysis model using Natural Language Processing (NLP) and 
+                        text analytics to classify text data into positive and negative sentiments. Applied 
+                        machine learning techniques to analyze opinions from text materials.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-badge">NLP</span>
+                        <span class="tech-badge">Text Analytics</span>
+                        <span class="tech-badge">Python</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="project-title">Mobile Device Usage & User Behavior</h3>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">
+                        Developed machine learning models to predict user behavior based on mobile interaction 
+                        patterns. Utilized clustering techniques (K-Means, DBSCAN) to segment users and created 
+                        interactive visualizations to help optimize app launches and marketing strategies.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Machine Learning</span>
+                        <span class="tech-badge">K-Means</span>
+                        <span class="tech-badge">Data Visualization</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3 class="project-title">Advanced Financial Modeling</h3>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">
+                        Created machine learning-based recommendation systems analyzing user behavior patterns 
+                        and purchase history for investment decisions. Built predictive models for portfolio 
+                        optimization, identifying key performance drivers and opportunities for enhanced ROI.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Financial Modeling</span>
+                        <span class="tech-badge">Predictive Analytics</span>
+                        <span class="tech-badge">Python</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="section-header">
+            <h2 class="section-title">Education</h2>
+            <p class="section-subtitle">
+                Academic excellence in data science and computer engineering
+            </p>
+        </div>
+        <div class="education-grid">
+            <div class="education-card">
+                <i class="fas fa-graduation-cap education-icon"></i>
+                <div class="education-degree">Master, Professional Studies, Data Science</div>
+                <div class="education-school">University of Maryland, Baltimore County</div>
+                <div class="education-date">Expected December 2025</div>
+                <div class="education-gpa">GPA: 4.0</div>
+            </div>
+
+            <div class="education-card">
+                <i class="fas fa-graduation-cap education-icon"></i>
+                <div class="education-degree">BTECH, Computer Science and Engineering</div>
+                <div class="education-school">CVR College of Engineering, India</div>
+                <div class="education-date">May 2022</div>
+                <div class="education-gpa">GPA: 3.49</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements">
+        <div class="section-header">
+            <h2 class="section-title">Certifications & Achievements</h2>
+            <p class="section-subtitle">
+                Recognition for excellence and innovation
+            </p>
+        </div>
+        <div class="achievements-grid">
+            <div class="achievement-card">
+                <i class="fas fa-trophy achievement-icon"></i>
+                <h3 class="achievement-title">Smart India Hackathon - 3rd Place</h3>
+                <p class="achievement-description">
+                    Won third place in Smart India Hackathon and developed an innovative application 
+                    for domestic waste management, demonstrating problem-solving and technical skills.
+                </p>
+            </div>
+
+            <div class="achievement-card">
+                <i class="fas fa-award achievement-icon"></i>
+                <h3 class="achievement-title">Best Super Rookie - DBS</h3>
+                <p class="achievement-description">
+                    Awarded Best Super Rookie for excellent teamwork and successful contribution 
+                    within 6 months of joining Development Bank of Singapore Tech India.
+                </p>
+            </div>
+
+            <div class="achievement-card">
+                <i class="fas fa-star achievement-icon"></i>
+                <h3 class="achievement-title">Best Team Contributor - DBS</h3>
+                <p class="achievement-description">
+                    Recognized as Best Team Contributor for the India Loans Project at Development 
+                    Bank of Singapore, highlighting exceptional collaboration and project execution.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-header">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">
+                Let's connect and discuss how I can contribute to your organization
+            </p>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-item">
+                <i class="fas fa-envelope contact-icon"></i>
+                <div class="contact-label">Email</div>
+                <div class="contact-value">
+                    <a href="mailto:harshitha.josyula3112@gmail.com">harshitha.josyula3112@gmail.com</a>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <i class="fas fa-phone contact-icon"></i>
+                <div class="contact-label">Phone</div>
+                <div class="contact-value">
+                    <a href="tel:+14109634315">+1-410-963-4315</a>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <i class="fab fa-linkedin contact-icon"></i>
+                <div class="contact-label">LinkedIn</div>
+                <div class="contact-value">
+                    <a href="https://www.linkedin.com/in/harshitha-josyula" target="_blank">LinkedIn Profile</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Harshitha Josyula. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.timeline-item, .project-card, .skill-category, .achievement-card, .education-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
