@@ -324,6 +324,52 @@
             align-items: center;
         }
 
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-image {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .profile-image-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .profile-image-wrapper {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .profile-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .about-image:hover {
+            transform: scale(1.02);
+        }
+
         .about-text h3 {
             font-size: 2rem;
             color: var(--primary);
@@ -339,9 +385,12 @@
 
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
+            margin-top: 4rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .stat-card {
@@ -711,6 +760,110 @@
             line-height: 1.6;
         }
 
+        /* Publications Section */
+        .publications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .publication-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 2.5rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--accent);
+        }
+
+        .publication-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .publication-type {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--text-light);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .publication-type i {
+            font-size: 1rem;
+        }
+
+        .publication-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .publication-description {
+            color: var(--text-dark);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .publication-highlights {
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-dark);
+        }
+
+        .highlight-item i {
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+
+        .publication-topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .topic-tag {
+            padding: 0.4rem 1rem;
+            background: linear-gradient(135deg, rgba(10, 37, 64, 0.05), rgba(26, 95, 122, 0.05));
+            border: 1px solid var(--secondary);
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--secondary);
+        }
+
+        .publication-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            background: var(--accent);
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .publication-link:hover {
+            background: var(--primary);
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+
         /* Contact Section */
         #contact {
             background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
@@ -829,6 +982,15 @@
 
             .about-content {
                 grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-image-container {
+                order: -1;
+            }
+
+            .profile-image {
+                max-width: 300px;
             }
 
             .stats-grid {
@@ -866,6 +1028,7 @@
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#publications">Publications</a></li>
                 <li><a href="#education">Education</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -905,6 +1068,11 @@
             </p>
         </div>
         <div class="about-content">
+            <div class="about-image-container">
+                <div class="profile-image-wrapper">
+                    <img src="profile-photo.jpg" alt="Harshitha Josyula" class="profile-image">
+                </div>
+            </div>
             <div class="about-text">
                 <h3>Professional Summary</h3>
                 <p>
@@ -924,23 +1092,23 @@
                     perfect 4.0 GPA, I combine academic excellence with practical industry experience.
                 </p>
             </div>
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">4.0</div>
-                    <div class="stat-label">GPA</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">2+</div>
-                    <div class="stat-label">Years Experience</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">12%</div>
-                    <div class="stat-label">Profit Increase at DBS</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">40%</div>
-                    <div class="stat-label">Efficiency Gain</div>
-                </div>
+        </div>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">4.0</div>
+                <div class="stat-label">GPA</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">2+</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">12%</div>
+                <div class="stat-label">Profit Increase at DBS</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">40%</div>
+                <div class="stat-label">Efficiency Gain</div>
             </div>
         </div>
     </section>
@@ -1187,6 +1355,113 @@
         </div>
     </section>
 
+    <!-- Publications & Papers Section -->
+    <section id="publications">
+        <div class="section-header">
+            <h2 class="section-title">Publications & Research Papers</h2>
+            <p class="section-subtitle">
+                Academic research and case studies in data science and predictive analytics
+            </p>
+        </div>
+        <div class="publications-grid">
+            <div class="publication-card">
+                <div class="publication-type">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Research Paper</span>
+                </div>
+                <h3 class="publication-title">Big Data and Predictive Analysis: Forecasting Trends</h3>
+                <p class="publication-description">
+                    Comprehensive research exploring how Big Data and Predictive Analytics reveal deeper 
+                    insights into market dynamics, customer understanding, and trend development. Examines 
+                    key technologies including machine learning, edge computing, and federated learning 
+                    across healthcare, finance, and retail sectors.
+                </p>
+                <div class="publication-topics">
+                    <span class="topic-tag">Big Data</span>
+                    <span class="topic-tag">Predictive Analytics</span>
+                    <span class="topic-tag">Machine Learning</span>
+                    <span class="topic-tag">IoT</span>
+                    <span class="topic-tag">Blockchain</span>
+                </div>
+                <a href="https://github.com/harshithajosyula3112/Big-Data-and-predictive-analysis" target="_blank" class="publication-link">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+            </div>
+
+            <div class="publication-card">
+                <div class="publication-type">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Case Study</span>
+                </div>
+                <h3 class="publication-title">Optimizing Host Pricing at Airbnb</h3>
+                <p class="publication-description">
+                    Developed a predictive model to forecast guest demand and optimize pricing for Airbnb 
+                    listings. Addressed challenges of working with massive datasets containing hundreds of 
+                    millions of data points, complex feature engineering, and balancing model performance 
+                    with business interpretability.
+                </p>
+                <div class="publication-highlights">
+                    <div class="highlight-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Predictive pricing model development</span>
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Feature engineering for complex relationships</span>
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Algorithm performance evaluation</span>
+                    </div>
+                </div>
+                <div class="publication-topics">
+                    <span class="topic-tag">Predictive Modeling</span>
+                    <span class="topic-tag">Pricing Optimization</span>
+                    <span class="topic-tag">Feature Engineering</span>
+                </div>
+                <a href="https://github.com/harshithajosyula3112/Optimizing-Host-Pricing-at-Airbnb" target="_blank" class="publication-link">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+            </div>
+
+            <div class="publication-card">
+                <div class="publication-type">
+                    <i class="fas fa-film"></i>
+                    <span>Case Study</span>
+                </div>
+                <h3 class="publication-title">Optimizing Content Recommendations at Netflix</h3>
+                <p class="publication-description">
+                    Analyzed Netflix's content recommendation system to enhance user satisfaction and 
+                    retention. Addressed challenges of processing 100 billion events per day, managing 
+                    noisy and incomplete data, and improving recommendation accuracy for 208 million 
+                    subscribers worldwide.
+                </p>
+                <div class="publication-highlights">
+                    <div class="highlight-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Recommendation system optimization</span>
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Large-scale data processing (100B events/day)</span>
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Project management methodology selection</span>
+                    </div>
+                </div>
+                <div class="publication-topics">
+                    <span class="topic-tag">Recommendation Systems</span>
+                    <span class="topic-tag">User Engagement</span>
+                    <span class="topic-tag">Data Science</span>
+                </div>
+                <a href="https://github.com/harshithajosyula3112/Optimizing-Content-Recommendations-at-Netflix" target="_blank" class="publication-link">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- Education Section -->
     <section id="education">
         <div class="section-header">
@@ -1223,6 +1498,16 @@
             </p>
         </div>
         <div class="achievements-grid">
+            <div class="achievement-card">
+                <i class="fas fa-certificate achievement-icon"></i>
+                <h3 class="achievement-title">Deloitte Data Analytics Job Simulation</h3>
+                <p class="achievement-description">
+                    Completed Deloitte's Data Analytics Job Simulation through Forage (January 2026). 
+                    Successfully completed practical tasks in data analysis and forensic technology, 
+                    gaining hands-on experience with real-world data analytics challenges.
+                </p>
+            </div>
+
             <div class="achievement-card">
                 <i class="fas fa-trophy achievement-icon"></i>
                 <h3 class="achievement-title">Smart India Hackathon - 3rd Place</h3>
@@ -1281,7 +1566,7 @@
                 <i class="fab fa-linkedin contact-icon"></i>
                 <div class="contact-label">LinkedIn</div>
                 <div class="contact-value">
-                    <a href="https://www.linkedin.com/in/harshitha-josyula-a348b91a8/" target="_blank">LinkedIn Profile</a>
+                    <a href="https://www.linkedin.com/in/harshitha-josyula" target="_blank">LinkedIn Profile</a>
                 </div>
             </div>
         </div>
@@ -1348,7 +1633,7 @@
         }, observerOptions);
 
         // Observe elements for animation
-        document.querySelectorAll('.timeline-item, .project-card, .skill-category, .achievement-card, .education-card').forEach(el => {
+        document.querySelectorAll('.timeline-item, .project-card, .skill-category, .achievement-card, .education-card, .publication-card').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(20px)';
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
